@@ -147,7 +147,7 @@ export declare function eachPair<T>(object: {
 ```
 
 
-## Library @marcj/estdlib
+## Library @marcj/estdlib-rxjs
 
 ```typescript
 import { Observable, Subscription } from "rxjs";
