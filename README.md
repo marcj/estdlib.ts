@@ -7,11 +7,27 @@ Almost all handy functions are in one package, so you need a compiler supporting
 ```
 npm install @marcj/estdlib
 ```
-
-## Library @marcj/estdlib
-
+### Package @marcj/estdlib
 
 ```typescript
+/**
+ * Makes sure the error once printed using console.log contains the actual class name.
+ *
+ * class MyApiError extends CustomerError {}
+ *
+ * throw MyApiError() // prints MyApiError instead of simply "Error".
+ */
+export declare class CustomError extends Error {
+    constructor(message: string);
+}
+export interface ClassType<T> {
+    new (...args: any[]): T;
+}
+export declare function getClassName<T>(classType: ClassType<T> | Object): string;
+export declare function getClassPropertyName<T>(classType: ClassType<T> | Object, propertyName: string): string;
+export declare function applyDefaults<T>(classType: ClassType<T>, target: {
+    [k: string]: any;
+}): T;
 /**
  * Returns true if the given obj is a plain object, and no class instance.
  *
@@ -105,8 +121,46 @@ export declare function mergeStack(error: Error, stack: string): void;
  * Returns the current time as seconds.
  */
 export declare function time(): number;
-
-
+export declare function getPathValue(bag: {
+    [field: string]: any;
+}, parameterPath: string, defaultValue?: any): any;
+export declare function setPathValue(bag: object, parameterPath: string, value: any): void;
+/**
+ * Returns the human readable byte representation.
+ */
+export declare function humanBytes(bytes: number, si?: boolean): string;
+/**
+ * Logs every call to this method on stdout.
+ */
+export declare function log(): (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) => PropertyDescriptor;
+/**
+ * Makes sure that calls to this async method are stacked up and are called one after another and not parallel.
+ */
+export declare function stack(): (target: object, propertyKey: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => Promise<any>>) => void;
+/**
+ * Makes sure that this async method is only running once at a time. When this method is running and it is tried
+ * to call it another times, that call is dropped and returns simply the result of the previous running call.
+ */
+export declare function singleStack(): (target: object, propertyKey: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => Promise<any>>) => void;
+/**
+ * Returns the enum label for a given enum value.
+ */
+export declare function getEnumLabel(enumType: {
+    [field: string]: any;
+}, id: any): string | undefined;
+/**
+ * Returns all possible enum labels.
+ */
+export declare function getEnumLabels(enumDefinition: any): string[];
+/**
+ * Returns all possible enum keys.
+ */
+export declare function getEnumValues(enumDefinition: any): any[];
+/**
+ * Checks whether given enum value is valid.
+ */
+export declare function isValidEnumValue(enumDefinition: any, value: any, allowLabelsAsValue?: boolean): boolean;
+export declare function getValidEnumValue(enumDefinition: any, value: any, allowLabelsAsValue?: boolean): any;
 /**
  * Iterator for each key of an array or object.
  *
@@ -145,12 +199,10 @@ export declare function eachPair<T>(object: {
 }): IterableIterator<[string, T]>;
 
 ```
-
-
-## Library @marcj/estdlib-rxjs
+### Package @marcj/estdlib-rxjs
 
 ```typescript
-import { Observable, Subscription } from "rxjs";
+import { Observable, Subscription, TeardownLogic } from "rxjs";
 export declare class AsyncSubscription {
     private cb;
     constructor(cb: () => Promise<void>);
@@ -169,5 +221,6 @@ export declare function subscriptionToPromise<T>(subscription: Subscription): Pr
 export declare function awaitFirst<T>(o: Observable<T>): Promise<T>;
 export declare function observableToPromise<T>(o: Observable<T>, next?: (data: T) => void): Promise<T>;
 export declare function promiseToObservable<T>(o: () => Promise<T>): Observable<T>;
+export declare function tearDown(teardown: TeardownLogic): void;
 
 ```

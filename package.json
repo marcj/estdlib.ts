@@ -7,13 +7,15 @@
     "test": "rm -rf packages/*/dist && jest --coverage",
     "bootstrap": "lerna bootstrap --hoist --no-ci",
     "tsc": "lerna run tsc",
-    "publish": "lerna run tsc && lerna publish"
+    "publish": "lerna run tsc && lerna publish",
+    "readme": "cd packages/dev && npm run readme"
   },
   "peerDependencies": {
     "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {
     "@types/jest": "^23.3.9",
+    "@types/node": "^11.9.5",
     "bluebird": "^3.5.3",
     "jest": "^23.6.0",
     "jest-extended": "^0.11.0",
@@ -37,6 +39,9 @@
       "!**/lib/**/*",
       "!**/*.d.ts",
       "!index.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "packages/dev"
     ],
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest"
