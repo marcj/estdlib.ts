@@ -1,5 +1,9 @@
 # estdlib.ts
 
+[![Build Status](https://travis-ci.com/marcj/estdlib.ts.svg?branch=master)](https://travis-ci.com/marcj/estdlib.ts)
+[![npm version](https://badge.fury.io/js/%40marcj%2Festdlib.svg)](https://badge.fury.io/js/%40marcj%2Festdlib)
+[![npm version](https://badge.fury.io/js/%40marcj%2Festdlib-rxjs.svg)](https://badge.fury.io/js/%40marcj%2Festdlib-rxjs)
+
 Engineer's strict stdlib for TypeScript.
 
 Almost all handy functions are in one package, so you need a compiler supporting three shaking.
