@@ -16,6 +16,7 @@
   "devDependencies": {
     "@types/jest": "^23.3.9",
     "@types/node": "^11.9.5",
+    "coveralls": "^3.0.2",
     "bluebird": "^3.5.3",
     "jest": "^23.6.0",
     "jest-extended": "^0.11.0",
