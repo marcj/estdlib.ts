@@ -203,6 +203,7 @@ export declare function eachPair<T>(object: {
 }): IterableIterator<[string, T]>;
 
 ```
+
 ### Package @marcj/estdlib-rxjs
 
 ```typescript
@@ -222,7 +223,7 @@ export declare class Subscriptions {
     unsubscribe(): void;
 }
 export declare function subscriptionToPromise<T>(subscription: Subscription): Promise<void>;
-export declare function awaitFirst<T>(o: Observable<T>): Promise<T>;
+export declare function nextValue<T>(o: Observable<T>): Promise<T>;
 export declare function observableToPromise<T>(o: Observable<T>, next?: (data: T) => void): Promise<T>;
 export declare function promiseToObservable<T>(o: () => Promise<T>): Observable<T>;
 export declare function tearDown(teardown: TeardownLogic): void;

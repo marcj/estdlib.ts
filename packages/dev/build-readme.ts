@@ -17,6 +17,7 @@ console.log('```typescript');
 console.log(readFiles('../estdlib/dist/src/*.d.ts'));
 console.log('```');
 
+console.log('');
 console.log('### Package @marcj/estdlib-rxjs');
 console.log('');
 console.log('```typescript');

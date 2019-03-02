@@ -5,8 +5,9 @@
   "license": "MIT",
   "scripts": {
     "test": "rm -rf packages/*/dist && jest --coverage",
-    "bootstrap": "lerna bootstrap --hoist --no-ci",
+    "bootstrap": "lerna bootstrap --no-hoist --no-ci",
     "tsc": "lerna run tsc",
+    "tsc-watch": "lerna run --parallel tsc-watch",
     "publish": "lerna run tsc && lerna publish",
     "readme": "cd packages/dev && npm run readme"
   },
