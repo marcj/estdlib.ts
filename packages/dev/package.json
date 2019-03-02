@@ -1,6 +1,6 @@
 {
   "name": "@marcj/dev",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "engineering stdlib for typescript",
   "author": "Marc J. Schmidt <marc@marcjschmidt.de>",
   "license": "MIT",
