@@ -7,9 +7,11 @@
     "test": "rm -rf packages/*/dist && jest --coverage",
     "bootstrap": "lerna bootstrap --no-hoist --no-ci",
     "tsc": "lerna run tsc",
+    "docs": "lerna run docs",
     "tsc-watch": "lerna run --parallel tsc-watch",
     "publish": "lerna run tsc && lerna publish",
-    "readme": "cd packages/dev && npm run readme"
+    "readme": "cd packages/dev && npm run readme",
+    "docker-image": "docker build -t estdlib/website ."
   },
   "peerDependencies": {
     "reflect-metadata": "^0.1.12"
