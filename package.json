@@ -49,8 +49,7 @@
       "^.+\\.(ts|tsx)$": "ts-jest"
     },
     "testMatch": [
-      "estdlib/**/*.spec.ts",
-      "estdlib-rxjs/**/*.spec.ts"
+      "**/*.spec.ts"
     ],
     "setupTestFrameworkScriptFile": "jest-extended"
   }
