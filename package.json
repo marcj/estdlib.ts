@@ -38,8 +38,9 @@
     "collectCoverageFrom": [
       "**/*.{ts}",
       "!**/node_modules/**",
-      "!**/lib/**/*",
+      "!**/dist/**/*",
       "!**/*.d.ts",
+      "!website/**/*",
       "!index.ts"
     ],
     "testPathIgnorePatterns": [
