@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "test": "rm -rf packages/*/dist && lerna run tsc && jest --coverage",
-    "bootstrap": "lerna bootstrap --no-hoist --no-ci",
+    "bootstrap": "lerna bootstrap --hoist --no-ci",
     "tsc": "lerna run tsc",
-    "docs": "lerna run docs",
+    "docs": "lerna run tsc && typedoc",
     "tsc-watch": "lerna run --parallel tsc-watch",
     "publish": "lerna run tsc && lerna publish",
     "readme": "cd packages/dev && npm run readme",
-    "docker-image": "docker build -t estdlib/website ."
+    "docker-image": "docker build -t estdlib/website .",
+    "publish-website": "heroku container:push web && heroku container:release web"
   },
   "peerDependencies": {
     "reflect-metadata": "^0.1.12"
@@ -23,7 +24,9 @@
     "jest-extended": "^0.11.0",
     "ts-jest": "^23.10.4",
     "tslint": "5.11.0",
-    "typescript": "^3.1.1"
+    "typescript": "^3.3.3333",
+    "typedoc": "^0.14.2",
+    "typedoc-plugin-lerna-packages": "^0.1.2"
   },
   "engines": {
     "node": ">= 8.9.0"

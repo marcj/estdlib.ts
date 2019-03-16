@@ -1,9 +1,8 @@
 import * as express from 'express';
 
 const app = express();
-const port = 80;
+const port = process.env.PORT || 3000;
 
-app.use(express.static('../packages/estdlib/docs'));
-app.use('/rxjs', express.static('../packages/estdlib-rxjs/docs'));
+app.use(express.static('../docs'));
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
