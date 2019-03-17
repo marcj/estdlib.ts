@@ -1,17 +1,18 @@
 language: node_js
-
 node_js:
 - '8'
 - '10'
-
 sudo: false
-
 before_script:
 - npm install
 - npm install -g coveralls lerna
 - lerna bootstrap --hoist --no-ci
 - npm run tsc
-
 script:
 - ./node_modules/.bin/jest --coverage
 - cat ./coverage/lcov.info | coveralls
+deploy:
+  provider: heroku
+  api_key:
+    secure: Pw0fRk37iSUA5kvLZFO08ubljxqy9JawnABGGi+s1Pl8j/QyY+pEnVyEIuFP2dcYzK2L6zsx3TEvTHVIrTBWN1DOC8oVWfwj8MBkBhJ/VvvmjiJCpA3gIjRjKGAe4unXbHpntxLslFFHCTTdTT8W08CAasTCi/O6P+8rWk+7ekcxj3xdVEg+BJGOle7L9EfwGmuCewFevlz/A/Ly1EKhC63tzArWCsAGV/Uv+1HduB2YaVJ8/SgiFAkKV29d0vyOGE7uv3e3zZuswlfBP4RPDGwFQwq/7SlLsQlloYdXFQo0u+zBPq/Wh0jIrdUPmCkdGcqAqh7uG7yM77n28LaHnhndXEaiBWBBGSBD4M9Oi6YpRP8E4a7oDlThslfrJVusRl1tHOts3ykVvSa7OuFcema/WJCUJQ1EfQKEvQSmmfY+R7tvBNmS9tN+8p7XxAxifsW6q8OJsapPAScbxlIrsdqIcNOxXVRUblM6iTmHrwFDNhRRfaoCAUpWrzJqLNDDqBWSsNv0Cldj+pxISR1u7dCJmDzFnLORPEO1X4SejUSs70rK02LtlSHgNm/k4wQPw/k4PZGBSxvmBPe/GguzHy1MzZPNWIgZ6JJjdqcHv9mCtm75LupIFTJI6Nxy/MUxrnUcjv3bLCwAgALQ5//I2GkJPWv0OfpDEAPDUDDJB9s=
+  app: marcj-estdlib
